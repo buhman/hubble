@@ -284,8 +284,8 @@ def execute_environment(cmd, env, hubble_args, other_args):
     try:
         # Run the requested command
         p = Popen([cmd] + other_args,
-                  stdout=PIPE,
-                  stderr=PIPE,
+                  stdout=None,
+                  stderr=None,
                   env=environ)
     except OSError as e:
         if e.errno == 2:
@@ -363,6 +363,6 @@ def main(argv=sys.argv, stdout=sys.stdout, stderr=sys.stderr, files=None):
             print("-- [%s] --" % green(env))
         # Wait for the command to complete
         out, err = p.communicate()
-        stdout.write(out.decode('utf-8'))
-        stderr.write(err.decode('utf-8'))
+        #stdout.write(out.decode('utf-8'))
+        #stderr.write(err.decode('utf-8'))
     return 0
